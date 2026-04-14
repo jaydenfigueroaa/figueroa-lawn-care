@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valley Edge Lawn</title>
-  <meta name="description" content="Valley Edge Lawn offers friendly lawn mowing and yard cleanup in Brawley, Calipatria, and Imperial. Call anytime for pricing." />
+  <meta name="description" content="Valley Edge Lawn offers friendly lawn mowing, edging, and cleanup in Brawley, Calipatria, and Imperial. One-time appointments available. Call anytime for pricing." />
   <style>
     :root{
       --bg:#f6fbf6;
@@ -31,8 +31,6 @@
     }
 
     a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-
     .container{
       width:min(1120px, calc(100% - 32px));
       margin:0 auto;
@@ -117,7 +115,10 @@
       box-shadow:var(--shadow);
     }
 
-    .btn-primary:hover{background:var(--green-dark)}
+    .btn-primary:hover{
+      background:var(--green-dark);
+    }
+
     .btn-secondary{
       background:#fff;
       color:var(--text);
@@ -165,7 +166,9 @@
       margin-bottom:20px;
     }
 
-    p{color:var(--muted)}
+    p{
+      color:var(--muted);
+    }
 
     .hero-text{
       max-width:60ch;
@@ -201,7 +204,8 @@
     .slot-box,
     .map-wrap,
     .cta-box,
-    .gallery-card{
+    .gallery-card,
+    .booking-card{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -227,7 +231,9 @@
       font-weight:700;
     }
 
-    .hero-card li:last-child{border-bottom:none}
+    .hero-card li:last-child{
+      border-bottom:none;
+    }
 
     .trust-strip{
       background:#fff;
@@ -312,7 +318,7 @@
 
     .gallery-card{
       overflow:hidden;
-      min-height:320px;
+      min-height:340px;
       position:relative;
       background-size:cover;
       background-position:center;
@@ -322,7 +328,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.48), rgba(0,0,0,.08));
+      background:linear-gradient(to top, rgba(0,0,0,.56), rgba(0,0,0,.10));
     }
 
     .gallery-content{
@@ -340,15 +346,15 @@
     }
 
     .photo-1{
-      background-image:url("https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1200&q=80");
+      background-image:url("https://images.unsplash.com/photo-1560749003-f4b1e17e2dff?auto=format&fit=crop&w=1200&q=80");
     }
 
     .photo-2{
-      background-image:url("https://images.unsplash.com/photo-1621955964441-c173e01c135b?auto=format&fit=crop&w=1200&q=80");
+      background-image:url("https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80");
     }
 
     .photo-3{
-      background-image:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80");
+      background-image:url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80");
     }
 
     .slot-box{
@@ -374,10 +380,6 @@
     }
 
     .booking-card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
       padding:26px;
     }
 
@@ -472,12 +474,12 @@
 
         <div class="hero-buttons">
           <a href="tel:14424563143" class="btn btn-primary">Call (442) 456-3143</a>
-          <a href="#booking" class="btn btn-secondary">Booking Info</a>
+          <a href="#booking" class="btn btn-secondary">Book One-Time Appointment</a>
         </div>
 
         <div class="badges">
           <span class="badge">Hours: 7 AM – 4 PM</span>
-          <span class="badge">Prices vary by yard</span>
+          <span class="badge">One-time appointments</span>
           <span class="badge">Call anytime for pricing</span>
         </div>
       </div>
@@ -522,16 +524,16 @@
           <p>Basic weed cleanup to help the yard feel less messy.</p>
         </div>
         <div class="card">
+          <h3>Leaf blowing</h3>
+          <p>Final cleanup that helps the whole property look finished and neat.</p>
+        </div>
+        <div class="card">
           <h3>Yard cleanup</h3>
           <p>Leaves, clippings, and light debris cleaned up after the job.</p>
         </div>
         <div class="card">
-          <h3>One-time service</h3>
-          <p>Perfect for a quick cleanup before guests, family, or an event.</p>
-        </div>
-        <div class="card">
-          <h3>Repeat service</h3>
-          <p>Regular cuts for people who want the yard kept up on a schedule.</p>
+          <h3>One-time appointment</h3>
+          <p>Book a single yard service and lock your spot on the schedule.</p>
         </div>
       </div>
     </div>
@@ -571,21 +573,21 @@
         <div class="gallery-card photo-1">
           <div class="gallery-content">
             <h3>Fresh mowing lines</h3>
-            <p>That clean striped look people notice right away.</p>
+            <p>Clean straight mower lines that make the whole yard stand out.</p>
           </div>
         </div>
 
         <div class="gallery-card photo-2">
           <div class="gallery-content">
-            <h3>Trimmed and neat</h3>
-            <p>A yard looks better when everything is cleaned up right.</p>
+            <h3>Clean edging</h3>
+            <p>Weed eater edging gives the yard a sharp clean finish.</p>
           </div>
         </div>
 
         <div class="gallery-card photo-3">
           <div class="gallery-content">
-            <h3>Sharp curb appeal</h3>
-            <p>Simple lawn work can make the whole house look better.</p>
+            <h3>Final cleanup</h3>
+            <p>Leaf blowing helps leave the property looking finished and neat.</p>
           </div>
         </div>
       </div>
@@ -596,9 +598,9 @@
     <div class="container booking-grid">
       <div>
         <p class="section-tag">Booking</p>
-        <h2>Professional booking setup with 4 jobs a day</h2>
+        <h2>Book a one-time appointment</h2>
         <p>
-          To keep bookings from overlapping, the best setup for your schedule is four jobs a day with time between houses.
+          This setup is built around one-time appointments only. Once a customer books a time, that appointment should stay on the schedule and that same slot should not be available to anyone else.
         </p>
         <p>
           Best daily time slots:
@@ -617,17 +619,17 @@
       </div>
 
       <div class="booking-card">
-        <h3>Turn on no-overlap booking</h3>
+        <h3>One-time booking with no overlap</h3>
         <p>
-          For true no-overlap booking, use a free Calendly page and set only these four times. Then replace the link below with your real booking link.
+          For true no-overlap booking, connect this site to a booking page like Calendly and only allow these four times. That way, once one person books a time, nobody else can take that same spot.
         </p>
 
-        <a class="btn btn-primary" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">Create free booking page</a>
+        <a class="btn btn-primary" href="YOUR-CALENDLY-LINK-HERE" target="_blank" rel="noopener noreferrer">Book a one-time appointment</a>
         <a class="btn btn-secondary" href="tel:14424563143">Call for pricing anytime</a>
         <a class="btn btn-secondary" href="sms:14424563143">Text Jayden</a>
 
         <p class="small" style="margin-top:14px;">
-          Once you make your booking page, I can help you swap the button to your real booking link.
+          Replace <strong>YOUR-CALENDLY-LINK-HERE</strong> with your real booking link when you create it.
         </p>
       </div>
     </div>
