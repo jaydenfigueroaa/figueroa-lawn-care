@@ -1,52 +1,665 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valley Edge Lawn</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Valley Edge Lawn offers friendly lawn mowing and yard cleanup in Brawley, Calipatria, and Imperial, California. Call anytime for pricing." />
   <style>
-    body {font-family: Arial; margin:0; background:#f4f8f4;}
-    header {background:#2e7d32; color:white; padding:20px; text-align:center;}
-    section {padding:20px;}
-    .btn {background:#4caf50; color:white; padding:12px 20px; text-decoration:none; display:inline-block; margin:10px 5px; border-radius:5px;}
-    .card {background:white; padding:20px; border-radius:10px; margin:10px 0;}
-    iframe {width:100%; height:300px; border:none; border-radius:10px;}
+    :root{
+      --bg:#f6fbf6;
+      --card:#ffffff;
+      --text:#183126;
+      --muted:#5e7466;
+      --line:#dbe7dd;
+      --green:#3f8f5b;
+      --green-dark:#2d6b43;
+      --gold:#f0c96c;
+      --alt:#edf6ef;
+      --shadow:0 12px 28px rgba(24,49,38,.08);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(246,251,246,.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--green), var(--green-dark));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:28px;
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
+    }
+
+    .brand-name{
+      font-size:1.15rem;
+      font-weight:800;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:.9rem;
+      font-weight:600;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:800;
+      border:none;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--green);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .btn-primary:hover{background:var(--green-dark)}
+    .btn-secondary{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .hero{
+      padding:76px 0 54px;
+      background:
+        radial-gradient(circle at top right, rgba(63,143,91,.15), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(240,201,108,.16), transparent 28%),
+        linear-gradient(180deg, #fbfffb 0%, #f6fbf6 100%);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .eyebrow,
+    .section-tag{
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:.76rem;
+      font-weight:800;
+      color:var(--green-dark);
+      margin:0 0 10px;
+    }
+
+    h1,h2,h3{
+      line-height:1.12;
+      margin-top:0;
+    }
+
+    h1{
+      font-size:clamp(2.3rem, 5vw, 4.3rem);
+      margin-bottom:14px;
+      max-width:11ch;
+    }
+
+    h2{
+      font-size:clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom:20px;
+    }
+
+    p{color:var(--muted)}
+
+    .hero-text{
+      max-width:60ch;
+      font-size:1.06rem;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:24px 0 14px;
+    }
+
+    .badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .badge{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:.92rem;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .card,
+    .hero-card,
+    .slot-box,
+    .map-wrap,
+    .cta-box,
+    .gallery-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:26px;
+    }
+
+    .hero-card ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .hero-card li{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+      font-weight:700;
+    }
+
+    .hero-card li:last-child{border-bottom:none}
+
+    .trust-strip{
+      background:#fff;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      padding:16px 0;
+      text-align:center;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .section{
+      padding:76px 0;
+    }
+
+    .section-alt{
+      background:var(--alt);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:24px;
+    }
+
+    .card h3{
+      margin-bottom:8px;
+    }
+
+    .area-grid,
+    .booking-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .area-tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .area-tags span{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .map-wrap{
+      overflow:hidden;
+      min-height:360px;
+    }
+
+    iframe{
+      width:100%;
+      height:100%;
+      min-height:360px;
+      border:0;
+      display:block;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .gallery-card{
+      overflow:hidden;
+      min-height:320px;
+      position:relative;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .gallery-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.48), rgba(0,0,0,.08));
+    }
+
+    .gallery-content{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      color:#fff;
+    }
+
+    .gallery-content p{
+      color:rgba(255,255,255,.88);
+      margin:6px 0 0;
+    }
+
+    .photo-1{
+      background-image:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .photo-2{
+      background-image:url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .photo-3{
+      background-image:url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .slot-box{
+      padding:24px;
+      margin-top:18px;
+    }
+
+    .slot-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .slot{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      text-align:center;
+      font-weight:800;
+      color:var(--green-dark);
+    }
+
+    .booking-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
+    }
+
+    .booking-card .btn{
+      width:100%;
+      margin-top:10px;
+    }
+
+    .small{
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    .cta-box{
+      padding:34px;
+      text-align:center;
+    }
+
+    .footer{
+      background:#163025;
+      color:#fff;
+      padding:28px 0;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .footer p{
+      color:rgba(255,255,255,.76);
+      margin:4px 0;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,
+      .cards,
+      .area-grid,
+      .gallery-grid,
+      .booking-grid,
+      .trust-grid,
+      .slot-row{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero{
+        padding-top:48px;
+      }
+
+      h1{
+        max-width:none;
+      }
+    }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <div class="logo">🌿</div>
+        <div>
+          <div class="brand-name">Valley Edge Lawn</div>
+          <div class="brand-sub">Brawley • Calipatria • Imperial</div>
+        </div>
+      </a>
 
-<header>
-  <h1>Valley Edge Lawn</h1>
-  <p>Brawley • Calipatria • Imperial</p>
-</header>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#area">Area</a>
+        <a href="#photos">Photos</a>
+        <a href="#booking">Booking</a>
+        <a href="tel:14424563143" class="btn btn-primary">Call Now</a>
+      </nav>
+    </div>
+  </header>
 
-<section>
-  <h2>Call Anytime for Pricing</h2>
-  <p>Prices depend on yard size and work needed.</p>
-  <a class="btn" href="tel:14424563143">Call (442) 456-3143</a>
-</section>
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Friendly local lawn service</p>
+        <h1>Clean yards with a sharp finish.</h1>
+        <p class="hero-text">
+          Valley Edge Lawn is owned by Jayden Figueroa and serves Brawley, Calipatria, and Imperial, California. Prices vary depending on yard size and what you want done. If you want pricing before booking, call anytime, even after hours.
+        </p>
 
-<section>
-  <h2>Services</h2>
-  <div class="card">Lawn Mowing</div>
-  <div class="card">Edging</div>
-  <div class="card">Weed Cleanup</div>
-  <div class="card">Yard Cleanup</div>
-</section>
+        <div class="hero-buttons">
+          <a href="tel:14424563143" class="btn btn-primary">Call (442) 456-3143</a>
+          <a href="#booking" class="btn btn-secondary">Booking Info</a>
+        </div>
 
-<section>
-  <h2>Service Area</h2>
-  <iframe src="https://www.google.com/maps?q=Brawley,California&output=embed"></iframe>
-</section>
+        <div class="badges">
+          <span class="badge">Hours: 8 AM – 3 PM</span>
+          <span class="badge">Prices vary by yard</span>
+          <span class="badge">Call anytime for pricing</span>
+        </div>
+      </div>
 
-<section>
-  <h2>Booking (No Overlap)</h2>
-  <p>Available times:</p>
-  <div class="card">8:00 AM</div>
-  <div class="card">10:30 AM</div>
-  <div class="card">1:00 PM</div>
-  <p>To book, call or text:</p>
-  <a class="btn" href="tel:14424563143">Call Now</a>
-</section>
+      <div class="hero-card">
+        <h3>Quick info</h3>
+        <ul>
+          <li><span>Owner</span><strong>Jayden Figueroa</strong></li>
+          <li><span>Phone</span><strong>(442) 456-3143</strong></li>
+          <li><span>Areas</span><strong>Brawley, Calipatria, Imperial</strong></li>
+          <li><span>Zip</span><strong>92227</strong></li>
+          <li><span>Work hours</span><strong>8 AM – 3 PM</strong></li>
+        </ul>
+        <p class="small">Need a quote first? Call anytime and ask.</p>
+      </div>
+    </div>
+  </section>
 
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div>Friendly service</div>
+      <div>Local work</div>
+      <div>Clean results</div>
+      <div>Simple process</div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <p class="section-tag">Services</p>
+      <h2>What Valley Edge Lawn can help with</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Lawn mowing</h3>
+          <p>Clean cuts that make the yard look neat and well kept.</p>
+        </div>
+        <div class="card">
+          <h3>Edging</h3>
+          <p>Sharp lines along sidewalks, curbs, and driveways for a cleaner look.</p>
+        </div>
+        <div class="card">
+          <h3>Weed cleanup</h3>
+          <p>Basic weed cleanup to help the yard feel less messy.</p>
+        </div>
+        <div class="card">
+          <h3>Yard cleanup</h3>
+          <p>Leaves, clippings, and light debris cleaned up after the job.</p>
+        </div>
+        <div class="card">
+          <h3>One-time service</h3>
+          <p>Perfect for a quick cleanup before guests, family, or an event.</p>
+        </div>
+        <div class="card">
+          <h3>Repeat service</h3>
+          <p>Regular cuts for people who want the yard kept up on a schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="area">
+    <div class="container area-grid">
+      <div>
+        <p class="section-tag">Service area</p>
+        <h2>Proudly serving Brawley, Calipatria, and Imperial</h2>
+        <p>
+          Valley Edge Lawn works in Brawley, Calipatria, and Imperial, California. If you are nearby and want to check if you are in range, just call and ask.
+        </p>
+        <div class="area-tags">
+          <span>Brawley</span>
+          <span>Calipatria</span>
+          <span>Imperial</span>
+          <span>California 92227</span>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          title="Map of service area"
+          src="https://www.google.com/maps?q=Brawley,California+92227&z=10&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="photos">
+    <div class="container">
+      <p class="section-tag">Clean cut look</p>
+      <h2>The kind of yard look customers want</h2>
+
+      <div class="gallery-grid">
+        <div class="gallery-card photo-1">
+          <div class="gallery-content">
+            <h3>Fresh clean cut</h3>
+            <p>Simple, clean curb appeal.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card photo-2">
+          <div class="gallery-content">
+            <h3>Sharp edges</h3>
+            <p>Neat lines make a big difference.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card photo-3">
+          <div class="gallery-content">
+            <h3>Well-kept yard</h3>
+            <p>A tidy yard looks better right away.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="booking">
+    <div class="container booking-grid">
+      <div>
+        <p class="section-tag">Booking</p>
+        <h2>Professional booking setup with spaced-out jobs</h2>
+        <p>
+          To keep bookings from overlapping, the cleanest schedule for your hours is three jobs a day. That gives you the time gap you wanted between houses.
+        </p>
+        <p>
+          Best daily time slots:
+        </p>
+
+        <div class="slot-box">
+          <h3>Recommended daily schedule</h3>
+          <div class="slot-row">
+            <div class="slot">8:00 AM</div>
+            <div class="slot">10:30 AM</div>
+            <div class="slot">1:00 PM</div>
+          </div>
+          <p class="small">These times fit your 8 AM to 3 PM work hours and leave room between jobs.</p>
+        </div>
+      </div>
+
+      <div class="booking-card">
+        <h3>Turn on no-overlap booking</h3>
+        <p>
+          For true no-overlap booking, use a free Calendly page and set only these three times. Then replace the link below with your real booking link.
+        </p>
+
+        <a class="btn btn-primary" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">Create free booking page</a>
+        <a class="btn btn-secondary" href="tel:14424563143">Call for pricing anytime</a>
+        <a class="btn btn-secondary" href="sms:14424563143">Text Jayden</a>
+
+        <p class="small" style="margin-top:14px;">
+          Once you make your booking page, I can help you swap the button to your real booking link.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container cta-box">
+      <p class="section-tag">Ready to get started?</p>
+      <h2>Call anytime for a quote</h2>
+      <p>
+        Prices depend on yard size and what you want done. Call or text anytime at <strong>(442) 456-3143</strong>.
+      </p>
+      <div class="hero-buttons" style="justify-content:center;">
+        <a href="tel:14424563143" class="btn btn-primary">Call (442) 456-3143</a>
+        <a href="sms:14424563143" class="btn btn-secondary">Text Jayden</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <strong>Valley Edge Lawn</strong>
+        <p>Friendly lawn mowing and yard cleanup in Brawley, Calipatria, and Imperial.</p>
+      </div>
+      <div>
+        <p>Owner: Jayden Figueroa</p>
+        <p>Phone: (442) 456-3143</p>
+        <p>Hours: 8 AM – 3 PM</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
